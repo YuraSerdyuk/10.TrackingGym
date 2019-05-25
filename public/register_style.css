@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+h1 {
+    font-family: Corbel;
+    font-size: 36px;
+    font-weight: 400;
+    color: #ff9c00;
+    text-align: center;
+    margin-top: 120px;
+    margin-bottom: 20px;
+}
+
+h1 span {
+    color: black;
+}
+
+h2 {
+    font-family: Corbel;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 70px;
+    animation: color 7s 1;
+}
+
+@keyframes color {
+    0% {color: white}
+    100% {color: black}
+}
+
+.email, .password, .password_repeat {
+    width: 130px;
+    height: 20px;
+    border: 1px solid black;
+    display: block;
+    margin: 0 auto 0px auto;
+    padding: 5px;
+}
+
+.email::placeholder, .password::placeholder, .password_repeat::placeholder {
+    font-family: Corbel;
+    font-size: 14px;
+    font-weight: 400;
+    color: #a6a6a6;
+    text-align: center;
+}
+
+.signUp, .back {
+    width: 140px;
+    height: 30px;
+    border: none;
+    background-color: #ff9c00;
+    font-family: Corbel;
+    font-size: 14px;
+    font-weight: 400;
+    color: white;
+    display: block;
+    margin: 0 auto 20px auto;
+    cursor: pointer;
+}
+
+
+.warning_login, .warning_password, .warning_password_repeat {
+    font-family: Corbel;
+    font-size: 13px;
+    color: red;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.success_login {
+    font-family: Corbel;
+    font-size: 13px;
+    color: green;
+    text-align: center;
+}
+
+.copyright {
+    text-align: center;
+}

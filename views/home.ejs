@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="home_style.css">
+</head>
+<body>
+    <section class="section_window">
+
+        <div class="window">
+            <div class="window_name">
+                <div><h3>Attention</h3></div>
+                <button class="window_exit">X</button>
+            </div>
+
+            <div class="window_group_info">
+                <h2>Are you shure you want to remove group:</h2>
+                <p class="window_group"></p>
+                <h2 class="ifzero">If you remove group you will lose the exercise, such as:</h2>
+                <p class="window_exercise"></p>
+            </div>
+
+            <div class="window_exercise_info">
+                <h2>Are you shure you want to remove exercise:</h2>
+                <p class="window_exercise2"></p>
+            </div>
+
+            <div class="window_buttons">
+                <button class="window_success_group">Continue</button>
+                <button class="window_success_exercise">Continue</button>
+                <button class="window_cancel">Cancel</button>
+            </div>
+        </div>
+
+        <div class="shadow"></div>
+    </section>
+
+    <button class="exit">Exit</button>
+    <h1>Tracking<span>Gym</span></h1>
+
+    <section class="main">
+        <div id="data">
+
+            <% if (group_docs.length != 0)  { %>
+            
+                <% for (let i = 0; i < group_docs.length; i++) { %>
+                    <div class="block_group">
+                        <div class="group_name">
+                            <input type="text" class="input_group_name <%=group_docs[i].name_group%>" placeholder="..input your group" value="<%=group_docs[i].name_group%>">
+                            <p class="warning_group"></p>
+                            <button class="group_delete <%=group_docs[i].name_group%>">X</button>
+                            <button class="group_success">
+                                <svg viewBox="0 0 50 50" width="35px" height="27px">
+                                    <polyline style="fill:none;stroke:#02991b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="  38,15 22,33 12,25 "/>        
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="all_exercise">
+
+                            <div class="block_exercise">
+                                <% if (exercise_docs.length != 0)  { %>
+
+                                    <% for (let k = 0; k < exercise_docs.length; k++) { %>
+                                        <% if (group_docs[i].name_group == exercise_docs[k].name_group) { %>
+
+                                            <div class="exercise">
+                                                <div class="exercise_name">
+                                                    <input class="input_exercise_name <%=exercise_docs[k].name_exercise%>" placeholder="..input name your exercise" value="<%=exercise_docs[k].name_exercise%>">
+                                                    <p class="warning_exercise"></p>
+                                                    <button class="exercise_delete <%=exercise_docs[k].name_exercise%>">X</button>
+                                                    <button class="exercise_success ">
+                                                        <svg viewBox="0 0 50 50" width="35px" height="27px">
+                                                            <polyline style="fill:none;stroke:#02991b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="  38,15 22,33 12,25 "/>        
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                                
+
+                                                <div class="res_table">  
+                                                    <p class="warning_cell"></p>
+                                                    <div class="cell_number_all">
+                                                        <div class="cell_number result_table_1"> <p>1</p> </div>
+                                                        <div class="cell_number result_table_2"> <p>2</p> </div>
+                                                        <div class="cell_number result_table_3"> <p>3</p> </div>
+                                                        <div class="cell_number result_table_4"> <p>4</p> </div>
+                                                    </div>
+                                                    <!-- МОЖЕ БУТИ ПОМИЛКА БО data.length БІЛЬША НІЖ ВИКОНУЄТЬСЯ ЦИКЛ. ТАКОЖ ЯКЩО ДОВЖИНА МАСИВУ НЕ КРАТНА 4 ТО ТО БУДУТЬ ВИВОДИТИСЬ ВСІ ЧИСЛА ЯКІ ВМІЩАЮТЬСЯ В cell -->
+                                                    <div class="all_column">
+                                                        <% var data = exercise_docs[k].data_exercise; %>
+
+                                                        <% if(data.length == 0) { %>
+                                                            <div class="section_column">
+                                                                <div class="cell"></div>
+                                                                <div class="cell"></div>
+                                                                <div class="cell"></div>
+                                                                <div class="cell"></div>
+                                                            </div>
+                                                        <% } else { %>
+                                                            <% for(let i=0; i < data.length/0; i++) { %>
+                                                                <div class="section_column">
+                                                                    <div class="cell"><%= data[0] %></div>
+                                                                    <% data.splice(0, 1) %>
+                                                                    <div class="cell"><%= data[0] %></div>
+                                                                    <% data.splice(0, 1) %>
+                                                                    <div class="cell"><%= data[0] %></div>
+                                                                    <% data.splice(0, 1) %>
+                                                                    <div class="cell"><%= data[0] %></div>
+                                                                    <% data.splice(0, 1) %>
+                                                                </div>
+                                                            <% } %>
+                                                        <% } %>
+                                                        
+                                                    </div>
+                                                </div>
+
+                                                <div class="buttons_and_input">
+                                                    <div class="numbers"> <p>1</p> </div>
+                                                    <input class="cell_input jq1">
+                                                    <div class="numbers"> <p>2</p> </div>
+                                                    <input class="cell_input jq2">
+                                                    <div class="numbers"> <p>3</p> </div>
+                                                    <input class="cell_input jq3">
+                                                    <div class="numbers"> <p>4</p> </div>
+                                                    <input class="cell_input jq4">
+
+                                                    <button class="cell_access">
+                                                        <svg viewBox="0 0 50 50" width="25px" height="23px">
+                                                            <polyline style="fill:none;stroke:#02991b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="  38,15 22,33 12,25 "/>        
+                                                        </svg>
+                                                    </button>
+
+                                                    <p class="warning"></p>
+                                                </div>
+                                                
+                                            </div>
+                                        <% } %>
+                                    <% } %>
+                                <% } else { %>
+
+                                <% } %>
+                            </div>
+                            
+                            <p class="text_cr_exercise">create exercise</p>
+                            <button class="cr_exercise">+</button>
+                        </div>
+                    </div>
+                    
+                <% } %>
+            <% } else { %>
+            
+            <% } %>
+            
+        </div>
+        <p class="text_cr_group">create group</p>
+        <button class="cr_group">+</button>
+    </section>
+
+    <p class="copyright">&copy; 2019 Serdyuk Yura</p>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+
+    <script>
+        (function () {
+            var exit = document.querySelector('.exit')
+
+            var win_heignt = $(window).height()
+            var win_heignt2 = win_heignt - 319
+            var copyright = $('.main').attr('style', 'min-height: ' + win_heignt2  + 'px')
+
+            $('body').on('click', '.group_success', (event) => {
+                var warning_group = $(event.target).closest('.group_name').find('.warning_group')
+                var new_input_group_name = $(event.target).closest('.group_name').find('.input_group_name').val()
+                var old_input_group_name = $(event.target).closest('.group_name').find('.input_group_name').attr('class').replace('input_group_name ', '')
+                console.log('Old group name: ' + old_input_group_name + '; New group name: ' + new_input_group_name);
+                
+                if (new_input_group_name.length != 0) {
+                    fetch('/group_success', {
+                    method: 'POST', // or 'PUT'
+                    body: JSON.stringify({  // тіло запроса
+                        old_group_name: old_input_group_name,
+                        new_group_name: new_input_group_name
+                    }), // data can be `string` or {object}!
+                    headers: new Headers({
+                    'Content-Type': 'application/json'
+                    })
+                    }).then(res => res.json())
+                    .catch(error => console.error('Error:', error))
+                    .then(response => {
+                        console.log('Success:', response)
+                        if (response.data == true) {
+                            var input = $(event.target).closest('.group_name').find('.input_group_name').attr('class')
+
+                            var old_input_group_name = input.split(" ", 2)[1]
+                            var class_input = input.split(" ", 2)[0]
+                            var new_class_input = class_input + ' ' + new_input_group_name
+                            $(event.target).closest('.group_name').find('.input_group_name').attr('class', new_class_input)
+                            
+                            var group_delete = $(event.target).closest('.group_name').find('.group_delete').attr('class')
+
+                            var class_delete = group_delete.split(" ", 2)[0]
+                            var new_class_input = class_delete + ' ' + new_input_group_name
+                            $(event.target).closest('.group_name').find('.group_delete').attr('class', new_class_input)
+
+                            warning_group.html('success').attr('style', 'color: green; animation: color_green 1s 1;')
+                            setTimeout(() => {
+                                warning_group.html('success').attr('style', 'animation: color_white 1s 1;')
+                                setTimeout(() => {warning_group.html(' ')}, 900); 
+                            }, 2000); 
+                            
+                        } else if (response.data == false) {
+                            warning_group.html('failed').attr('style', 'color: red; animation: color_red 1s 1;')
+                            setTimeout(() => {
+                                warning_group.html('failed').attr('style', 'animation: color_white2 1s 1;')
+                                setTimeout(() => {warning_group.html(' ')}, 900); 
+                            }, 2000);
+                        }
+                    });
+                } else {
+                    $(event.target).closest('.group_name').find('.input_group_name').attr("placeholder", "Fill this..");
+                }
+                
+            });
+
+            $('body').on('click', '.group_delete', (event) => {
+                var name_group = $(event.target).closest('.group_name').find('.group_delete').attr('class').replace('group_delete ', '')
+                var exercise = document.querySelector('.window_exercise')
+                var group = document.querySelector('.window_group');
+                var window_exit = document.querySelector('.window_exit')
+                var window_cancel = document.querySelector('.window_cancel')
+                var shadow = document.querySelector('.shadow')
+                var ifzero = document.querySelector('.ifzero')
+
+                if (name_group.length == 0) {
+                    $(event.target).closest('.block_group').html('')
+                } else {
+                    fetch('/get_exercise', {
+                        method: 'POST', // or 'PUT'
+                        body: JSON.stringify({  // тіло запроса
+                            name_group: name_group
+                        }), // data can be `string` or {object}!
+                        headers: new Headers({
+                        'Content-Type': 'application/json'
+                        })
+                        }).then(res => res.json())
+                        .catch(error => console.error('Error:', error))
+                        .then(response => {
+                            document.querySelector('.section_window').style.display = 'block'
+                            document.querySelector('.window_group_info').style.display = 'block'
+                            document.querySelector('.window_success_group').style.display = 'block'
+
+                            group.innerHTML = name_group
+                            var number_exercise = response.length-2
+                            if (response.length == 2) {
+                                exercise.innerHTML = response.exercise1 + ', ' + response.exercise2;
+                            } else if (response.length > 2) {
+                                exercise.innerHTML = response.exercise1 + ', ' + response.exercise2 + ' and ' + number_exercise + ' others';
+                            } else if (response.length == 1) {
+                                exercise.innerHTML = response.exercise1;
+                            } else if (response.length == 0) {
+                                exercise.innerHTML = 'null exercise'
+                                ifzero.innerHTML = 'You do not have exercise.'
+                            }
+                            
+                            window_exit.addEventListener('click',() => {
+                                document.querySelector('.section_window').style.display = 'none'
+                                document.querySelector('.window_group_info').style.display = 'none'
+                                document.querySelector('.window_success_group').style.display = 'none'
+                            });
+
+                            window_cancel.addEventListener('click',() => {
+                                document.querySelector('.section_window').style.display = 'none'
+                                document.querySelector('.window_group_info').style.display = 'none'
+                                document.querySelector('.window_success_group').style.display = 'none'
+                            });
+
+                            shadow.addEventListener('click',() => {
+                                document.querySelector('.section_window').style.display = 'none'
+                                document.querySelector('.window_group_info').style.display = 'none'
+                                document.querySelector('.window_success_group').style.display = 'none'
+                            });
+
+                            $('body').on('click', '.window_success_group', (event) => {
+                                var group_remove = document.querySelector('.window_group').innerHTML
+                                var exercise_remove = document.querySelector('.window_exercise').innerHTML
+                                
+                                fetch('/remove_group', {
+                                    method: 'POST', // or 'PUT'
+                                    body: JSON.stringify({  // тіло запроса
+                                        name_group: name_group
+                                    }), // data can be `string` or {object}!
+                                    headers: new Headers({
+                                    'Content-Type': 'application/json'
+                                    })
+                                    }).then(res => res.json())
+                                    .catch(error => console.error('Error:', error))
+                                    .then(response => {
+                                        if (response.result == true) {
+                                            location.reload();
+                                        } else {
+                                            console.log('НЕ ВИДАЛЕНО');
+                                        }
+                                    });
+                            });
+                        });
+                }
+
+                
+            });
+
+            $('body').on('click', '.exercise_success', (event) => {
+                var warning_exercise = $(event.target).closest('.exercise_name').find('.warning_exercise')
+                var group_name = $(event.target).closest('.block_group').find('.input_group_name').attr('class').replace('input_group_name ', '')
+                var old_input_exercise_name = $(event.target).closest('.exercise_name').find('.input_exercise_name').attr('class').replace('input_exercise_name ', '')
+                var new_input_exercise_name = $(event.target).closest('.exercise_name').find('.input_exercise_name').val()
+                console.log('Old exercise name: ' + old_input_exercise_name + '; New exercise name: ' + new_input_exercise_name);
+                
+                if (new_input_exercise_name.length != 0) {
+                    fetch('/exercise_success', {
+                    method: 'POST', // or 'PUT'
+                    body: JSON.stringify({  // тіло запроса
+                        old_exercise_name: old_input_exercise_name,
+                        new_exercise_name: new_input_exercise_name,
+                        group_name: group_name
+                    }), // data can be `string` or {object}!
+                    headers: new Headers({
+                    'Content-Type': 'application/json'
+                    })
+                    }).then(res => res.json())
+                    .catch(error => console.error('Error:', error))
+                    .then(response => {
+                        console.log('Success:', response)
+                        if (response.data == true) {
+                            var input = $(event.target).closest('.exercise_name').find('.input_exercise_name').attr('class')
+
+                            $(event.target).closest('.exercise').find('.warning_cell').html('')
+
+                            var old_input_exercise_name = input.split(" ", 2)[1]
+                            var class_input = input.split(" ", 2)[0]
+                            var new_class_input = class_input + ' ' + new_input_exercise_name
+                            $(event.target).closest('.exercise_name').find('.input_exercise_name').attr('class', new_class_input)
+                            
+                            var exercise_delete = $(event.target).closest('.exercise_name').find('.exercise_delete').attr('class')
+
+                            var class_delete = exercise_delete.split(" ", 2)[0]
+                            var new_class_input = class_delete + ' ' + new_input_exercise_name
+                            $(event.target).closest('.exercise_name').find('.exercise_delete').attr('class', new_class_input)
+
+                            warning_exercise.html('success').attr('style', 'color: green; animation: color_green 1s 1;')
+                            setTimeout(() => {
+                                warning_exercise.html('success').attr('style', 'animation: color_white 1s 1;')
+                                setTimeout(() => {warning_exercise.html(' ')}, 900); 
+                            }, 2000); 
+
+                        } else if (response.data == false) {
+                            warning_exercise.html('failed').attr('style', 'color: red; animation: color_red 1s 1;')
+                            setTimeout(() => {
+                                warning_exercise.html('failed').attr('style', 'animation: color_white2 1s 1;')
+                                setTimeout(() => {warning_exercise.html(' ')}, 900); 
+                            }, 2000);
+                        }
+                    });
+                } else {
+                    $(event.target).closest('.exercise_name').find('.input_exercise_name').attr("placeholder", "Fill this..");
+                }
+                
+            });
+
+            $('body').on('click', '.exercise_delete', (event) => {
+                var name_exercise= $(event.target).closest('.exercise_name').find('.exercise_delete').attr('class').replace('exercise_delete ', '')
+                var exercise = document.querySelector('.window_info')
+                
+                var window_exit = document.querySelector('.window_exit')
+                var window_cancel = document.querySelector('.window_cancel')
+                var shadow = document.querySelector('.shadow')
+
+                if (name_exercise.length == 0) {
+                    $(event.target).closest('.exercise').html('')
+                } else {
+                    document.querySelector('.section_window').style.display = 'block'
+                    document.querySelector('.window_exercise_info').style.display = 'block'
+                    document.querySelector('.window_success_exercise').style.display = 'block'
+                    document.querySelector('.window_exercise2').innerHTML = name_exercise
+
+                    $('body').on('click', '.window_success_exercise', (event) => {
+                        
+                        fetch('/remove_exercise', {
+                        method: 'POST', // or 'PUT'
+                        body: JSON.stringify({  // тіло запроса
+                            name_exercise: name_exercise
+                        }), // data can be `string` or {object}!
+                        headers: new Headers({
+                        'Content-Type': 'application/json'
+                        })
+                        }).then(res => res.json())
+                        .catch(error => console.error('Error:', error))
+                        .then(response => {
+                            if (response.result == true) {
+                                location.reload();
+                            } else {
+                                console.log('НЕ ВИДАЛЕНО');
+                            }
+                        });
+
+                    });
+
+
+                    window_exit.addEventListener('click',() => {
+                        document.querySelector('.section_window').style.display = 'none'
+                        document.querySelector('.window_exercise_info').style.display = 'none'
+                        document.querySelector('.window_success_exercise').style.display = 'none'
+                    });
+
+                    window_cancel.addEventListener('click',() => {
+                        document.querySelector('.section_window').style.display = 'none'
+                        document.querySelector('.window_exercise_info').style.display = 'none'
+                        document.querySelector('.window_success_exercise').style.display = 'none'
+                    });
+
+                    shadow.addEventListener('click',() => {
+                        document.querySelector('.section_window').style.display = 'none'
+                        document.querySelector('.window_exercise_info').style.display = 'none'
+                        document.querySelector('.window_success_exercise').style.display = 'none'
+                    });
+                }
+
+                
+            });
+
+            $('body').on('click', '.cell_access', (event) => {
+                var input_exercise_name = $(event.target).closest('.exercise').find('.input_exercise_name').val()
+                var exercise_name = $(event.target).closest('.exercise').find('.input_exercise_name').attr('class').replace('input_exercise_name ', '')
+               //var warning_cell2 = $(event.target).closest('.exercise').find('.warning_cell')
+                var warning_cell = $(event.target).closest('.buttons_and_input').find('.warning')
+
+                /* INPUTS */
+                $(event.target).closest('.buttons_and_input').find('.jq1').val()
+                var jq_input1 = $(event.target).closest('.buttons_and_input').find('.jq1').val()
+                $(event.target).closest('.buttons_and_input').find('.jq2').val()
+                var jq_input2 = $(event.target).closest('.buttons_and_input').find('.jq2').val()
+                $(event.target).closest('.buttons_and_input').find('.jq3').val()
+                var jq_input3 = $(event.target).closest('.buttons_and_input').find('.jq3').val()
+                $(event.target).closest('.buttons_and_input').find('.jq4').val()
+                var jq_input4 = $(event.target).closest('.buttons_and_input').find('.jq4').val()
+                var data = [jq_input1, jq_input2, jq_input3, jq_input4]
+
+                if(exercise_name.length == 0) {
+                    $(event.target).closest('.exercise').find('.warning_cell').html('Please fill out the field and click button.')
+                } else if (jq_input1 != '' && jq_input2 != '' && jq_input3 != '' && jq_input4 != '') {
+                    console.log("Exercise: " + input_exercise_name + "; Data: " + data);
+                    fetch('/cell_access', {
+                    method: 'POST', // or 'PUT'
+                    body: JSON.stringify({  // тіло запроса
+                        data: data,
+                        input_exercise_name: input_exercise_name
+
+                    }), // data can be `string` or {object}!
+                    headers: new Headers({
+                    'Content-Type': 'application/json'
+                    })
+                    }).then(res => res.json())
+                    .catch(error => console.error('Error:', error))
+                    .then(response => {
+                        console.log('Success:', response)
+                        if (response.data == false) {
+
+                            warning_cell.html('failed').attr('style', 'color: red; animation: color_red 1s 1;')
+                            setTimeout(() => {
+                                warning_cell.html('failed').attr('style', 'animation: color_white2 1s 1;')
+                                setTimeout(() => {warning_cell.html(' ')}, 900); 
+                            }, 2000);
+
+                        } else if (response.data) {
+                            if (response.data.length == 4) {
+                                $(event.target).closest('.exercise').find('.all_column').html('<div class="section_column"> <div class="cell">' + jq_input1 + '</div> <div class="cell">' + jq_input2 + '</div> <div class="cell">' + jq_input3 + '</div> <div class="cell">' + jq_input4 + '</div> </div>')
+                            } else {
+                                $(event.target).closest('.exercise').find('.all_column').append('<div class="section_column"> <div class="cell">' + jq_input1 + '</div> <div class="cell">' + jq_input2 + '</div> <div class="cell">' + jq_input3 + '</div> <div class="cell">' + jq_input4 + '</div> </div>')
+                            }
+                            
+                            $(event.target).closest('.exercise').find('.all_column').scrollLeft(10000)
+
+                            $(event.target).closest('.buttons_and_input').find('.jq1').val('')
+                            $(event.target).closest('.buttons_and_input').find('.jq2').val('')
+                            $(event.target).closest('.buttons_and_input').find('.jq3').val('')
+                            $(event.target).closest('.buttons_and_input').find('.jq4').val('')
+
+                            warning_cell.html('success').attr('style', 'color: green; animation: color_green 1s 1;')
+                            setTimeout(() => {
+                                warning_cell.html('success').attr('style', 'animation: color_white 1s 1;')
+                                setTimeout(() => {warning_cell.html(' ')}, 900); 
+                            }, 2000);
+                        }
+                    });
+                } else {
+                    $(event.target).closest('.buttons_and_input').find('.warning').html('Fill each cell')
+                }
+
+            });
+
+            $('body').on('click', '.cr_group', (event) => {
+                $('#data').append('<div class="block_group"><div class="group_name"> <input type="text" class="input_group_name " placeholder="..input your group" value=""><p class="warning_group"></p><button class="group_delete ">X</button><button class="group_success"><svg viewBox="0 0 50 50" width="35px" height="27px"><polyline style="fill:none;stroke:#02991b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="  38,15 22,33 12,25 "/>        </svg></button></div> <div class="all_exercise"><div class="block_exercise"></div><p class="text_cr_exercise">create exercise</p><button class="cr_exercise">+</button></div></div>')
+            });
+            
+            $('body').on('click', '.cr_exercise', (event) => {
+                var name_group = $(event.target).closest('.block_group').find('.input_group_name').attr('class').split(" ", 2)[1];
+                
+                if(name_group.length == 0) {
+                    $(event.target).closest('.all_exercise').find('.block_exercise').append('<p class="warn_exercise">Please fill out the field and click button.</p>')
+                } else {
+                    $(event.target).closest('.all_exercise').find('.block_exercise').append('<div class="exercise"><div class="exercise_name"><input class="input_exercise_name " placeholder="..input name your exercise" value=""><p class="warning_exercise"></p><button class="exercise_delete ">X</button><button class="exercise_success "><svg viewBox="0 0 50 50" width="35px" height="27px"><polyline style="fill:none;stroke:#02991b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="  38,15 22,33 12,25 "/></svg></button></div><div class="res_table"><p class="warning_cell"></p><div class="cell_number_all"><div class="cell_number result_table_1"> <p>1</p> </div><div class="cell_number result_table_2"> <p>2</p> </div><div class="cell_number result_table_3"> <p>3</p> </div><div class="cell_number result_table_4"> <p>4</p> </div></div><div class="all_column"><div class="section_column"><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div></div></div></div><div class="buttons_and_input"><div class="numbers"> <p>1</p> </div><input class="cell_input jq1"><div class="numbers"> <p>2</p> </div><input class="cell_input jq2"><div class="numbers"> <p>3</p> </div><input class="cell_input jq3"><div class="numbers"> <p>4</p> </div><input class="cell_input jq4"><button class="cell_access"><svg viewBox="0 0 50 50" width="25px" height="23px"><polyline style="fill:none;stroke:#02991b;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" points="  38,15 22,33 12,25 "/></svg></button><p class="warning"></p></div></div>')
+                    $(event.target).closest('.all_exercise').find('.warn_exercise').html('').attr('class', 'padding: 0;')
+                }
+                
+            });
+
+            exit.addEventListener('click',() => {
+                window.location.replace('/');
+            });
+
+        })();
+    </script>
+</body>
+</html>

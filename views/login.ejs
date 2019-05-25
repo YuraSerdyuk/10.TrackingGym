@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TrackingGym</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login_style.css">
+</head>
+<body>
+    <section>
+        <h1>Tracking<span>Gym</span></h1>
+        
+        <input type="text" class="email" name="login" placeholder="login" value="">
+        <p class="warning_login"></p>
+        <input type="password" class="password" name="password" value="" placeholder="password" value="">
+        <p class="warning_password"></p>
+    
+        <button class="login" name="submitLogin" value="">sign in</button>
+        <button class="signUp" name="submitSignUp">sign up</button>
+    </section>
+      
+
+    <p class="copyright">&copy; 2019 Serdyuk Yura</p>
+<script>
+    (function () {
+        var login = document.querySelector('.login');
+        var register = document.querySelector('.signUp');
+        var warning_login = document.querySelector('.warning_login');
+        var warning_password = document.querySelector('.warning_password');
+
+        var win_heignt = window.innerHeight
+        var win_heignt2 = win_heignt - 165
+        document.querySelector('section').style.minHeight = win_heignt2 + 'px'
+
+        login.addEventListener('click', function () {
+            var login_data = document.querySelector('.email').value;
+            var password_data = document.querySelector('.password').value;
+    
+            fetch('/title', {
+                method: 'POST', // or 'PUT'
+                body: JSON.stringify({  // тіло запроса
+                    login_data:     login_data,
+                    password_data:  password_data
+                }), // data can be `string` or {object}!
+                headers: new Headers({
+                'Content-Type': 'application/json'
+                })
+            }).then(res => res.json())
+            .catch(error => console.error('Error:', error))
+            .then(response => {
+                console.log('Success:', response)
+                warning_login.innerText = response.warning_login;
+                warning_password.innerText = response.warning_password;
+                if (response.triger == true) {
+                    window.location.replace('/home?' + response.id)
+                }
+            });
+        });
+
+        register.addEventListener('click', () => {
+            window.location.replace('register')
+        })
+    })();
+</script>
+
+</body>
+</html>

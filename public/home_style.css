@@ -1,0 +1,507 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.exit {
+    font-family: Corbel;
+    cursor: pointer;
+    float: right;
+    border: none;
+    background: none;
+}
+
+h1 {
+    font-family: Corbel;
+    font-size: 36px;
+    font-weight: 400;
+    color: #ff9c00;
+    text-align: center;
+    padding-top: 120px;
+    padding-bottom: 110px;
+}
+
+h1 span {
+    color: black;
+}
+
+
+.text_cr_group, .text_cr_exercise {
+    font-family: Corbel;
+    font-size: 20px;
+    font-weight: 400;
+    color: black;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.text_cr_group {
+    margin-top: 0px;
+}
+
+.cr_group, .cr_exercise {
+    width: 26px;
+    height: 26px;
+    border: 1px solid black;
+    border-radius: 100px;
+    margin: auto;
+    display: block;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background: none;
+}
+
+
+
+
+
+#data {
+    width: 80%;
+    margin: auto;
+}
+
+
+
+
+
+.group_name {
+    width: 100%;
+    height: 30px;
+    border: 1px solid black;
+    border-bottom-style: dashed;
+}
+
+.input_group_name {
+    width: 50%;
+    height: 100%;
+    font-family: Corbel;
+    font-size: 18px;
+    font-weight: 700;
+    border: none;
+    padding-left: 6px;
+    text-transform: capitalize;
+    float: left;
+}
+
+.input_group_name::placeholder {
+    color: #a6a6a6;
+    font-weight: normal;
+    padding-left: 5px;
+}
+
+.warning_group {
+    float: left;
+    padding: 6px;
+}
+
+@keyframes color_green {
+    0% {color: white}
+    100% {color: green}
+}
+
+@keyframes color_red {
+    0% {color: white}
+    100% {color: red}
+}
+
+@keyframes color_white {
+    0% {color: green}
+    100% {color: white}
+}
+
+@keyframes color_white2 {
+    0% {color: red}
+    100% {color: white}
+}
+
+
+.group_success, .edit {
+    float: right;
+    color: #02991b;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+}
+
+.edit {
+    color: black;
+}
+
+.group_delete {
+    width: 35px;
+    height: 30px;
+    font-family: Corbel;
+    font-size: 21px;
+    float: right;
+    color: red;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.triger1 {
+    float: right;
+    color: white;
+}
+
+
+.all_exercise {
+    border: 1px dashed black;
+    margin-bottom: 30px;
+}
+
+.exercise {
+    width: 100%;
+    border-bottom: 1px dashed rgb(158, 158, 158);
+}
+
+
+.text_cr_exercise {
+    font-size: 18px;
+}
+
+.cr_exercise {
+    width: 23px;
+    height: 23px;
+}
+
+
+.exercise_name {
+    width: 100%;
+    height: 30px;
+}
+
+.exercise_success {
+    float: right;
+    color: #02991b;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    background: none;
+}
+
+.exercise_delete {
+    width: 35px;
+    height: 30px;
+    font-family: Corbel;
+    font-size: 21px;
+    float: right;
+    color: red;
+    cursor: pointer;
+    border: none;
+    background: none;
+}
+
+.triger1 {
+    float: right;
+    color: white;
+}
+
+
+.input_exercise_name {
+    width: 50%;
+    height: 100%;
+    font-family: Corbel;
+    font-size: 18px;
+    font-weight: normal;
+    border: none;
+    padding-left: 12px;
+    float: left;
+}
+
+.input_exercise_name::placeholder {
+    color: #a6a6a6;
+    font-weight: normal;
+    padding-left: 15px;
+}
+
+.warning_exercise {
+    float: left;
+    padding: 6px;
+}
+
+.res_table {
+    height: 120px;
+}
+
+.cell_number_all {
+    float: left;
+    margin-left: 10px;
+}
+
+.cell_number {
+    width: 25px;
+    height: 25px;
+    background-color: #7b7b7b;
+}
+
+.cell_number p {
+    font-family: Corbel;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+}
+
+.column_plus_button {
+    height: 100px;
+    /* float: left; */
+}
+
+.all_column {
+    width: 85%;
+    overflow-x: scroll;
+    display: flex;
+}
+
+@media only screen and (max-width: 778px) and (min-width: 0px){
+
+    .all_column::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+
+    .cell_number_all {
+        margin-top: 2px;
+    }
+}
+
+.section_column {
+    float: left;
+}
+
+.cell {
+    width: 23px;
+    height: 20px;
+    border: 1px solid black;
+    padding-top: 3px;
+}
+
+.cell input {
+    width: 23px;
+    height: 23px;
+    border: none;
+}
+
+.cell_access {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #02991b;
+    border-radius: 25px;
+    margin-left: 10px;
+    float: left;
+    cursor: pointer;
+    background: none;
+}
+
+.cell_more {
+    width: 25px;
+    height: 25px;
+    border: 1px dashed #7b7b7b;
+    border-radius: 100px;
+    cursor: pointer;
+    float: left;
+    /* margin-top: 38px;
+    margin-left: 15px; */
+    background: none;
+}
+
+.cell_more p{
+    text-align: center;
+    color: #7b7b7b;
+    margin-top: 50%;
+    line-height: 0;
+    cursor: pointer;
+}
+
+
+
+
+.buttons_and_input {
+    height: 25px;
+    width: 210px;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+.numbers {
+    width: 18px;
+    height: 25px;
+    float: left;
+}
+
+.numbers p {
+    font-family: Corbel;
+    font-size: 16px;
+    text-align: center;
+}
+
+.cell_input {
+    width: 23px;
+    height: 23px;
+    border: 1px dashed black;
+    float: left;
+}
+
+
+.warning {
+    font-family: Corbel;
+    text-align: center;
+    color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+.section_window {
+    display: none;
+}
+
+.window {
+    width: 300px;
+    height: 200px;
+    background-color: white;
+    position: fixed;
+    z-index: 11;
+    margin-left: -150px;
+    margin-top: -100px;
+    left: 50%;
+    top: 50%;
+}
+
+.window_group_info {
+    height: 109px;
+    display: none;
+}
+
+.window_group_info h2 {
+    font-family: Corbel;
+    font-size: 15px;
+    text-align: center;
+    padding-top: 10px;
+}
+
+.window_group_info p {
+    font-family: Corbel;
+    font-size: 15px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+
+.window_group_info h2 p {
+    width: 10px;
+}
+
+.window_exercise_info {
+    height: 109px;
+    display: none;
+}
+
+.window_exercise_info h2 {
+    font-family: Corbel;
+    font-size: 15px;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.window_exercise_info p {
+    font-family: Corbel;
+    font-size: 15px;
+    text-align: center;
+    background-color: #f1f1f1;
+    margin-top: 5px;
+}
+
+.window_name {
+    width: 100%;
+    height: 40px;
+    background-color: #f1f1f1;
+}
+
+.window_name div {
+    width: 260px;
+    height: 40px;
+    float: left;
+}
+
+.window_name div h3{
+    font-family: Corbel;
+    font-size: 20px;
+    text-align: center;
+    padding: 6px 0 0 40px;
+}
+
+.window_name button {
+    width: 40px;
+    height: 40px;
+    float: right;
+    border-style: none;
+    background-color: #f1f1f1;
+    font-family: Corbel;
+    font-size: 22px;
+    text-align: center;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+
+.window_buttons {
+    margin-top: 10px;
+}
+
+.window_success_group, .window_success_exercise {
+    width: 50%;
+    height: 40px;
+    float: left;
+    border-style: none;
+    border-right: solid .5px white;
+    cursor: pointer;
+    display: none;
+}
+
+.window_cancel {
+    width: 50%;
+    height: 40px;
+    float: right;
+    border-style: none;
+    border-left: solid .5px white;
+    cursor: pointer;
+}
+
+.shadow {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.warn_exercise {
+    font-family: Corbel;
+    color: red;
+    text-align: center;
+    padding: 5px 0 5px 0;
+}
+
+body {
+    height: 100%;
+}
+
+.warning_cell {
+    font-family: Corbel;
+    color: red;
+    text-align: center;
+}
+
+.copyright {
+    text-align: center;
+    margin-bottom: 7px;
+}

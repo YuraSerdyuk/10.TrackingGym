@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="register_style.css">
+    <title>TrackingGym: Register</title>
+</head>
+<body>
+    <section>
+        <h1>Tracking<span>Gym</span></h1>
+    
+        <h2>Register</h2>
+    
+        <input type="text" class="email" name="login" placeholder="login" >
+        <p class="success_login"></p>
+        <p class="warning_login"></p>
+        <input type="password" class="password" name="password" value="" placeholder="password">
+        <p class="warning_password"></p>
+        <input type="password" class="password_repeat" name="password" value="" placeholder="repeat password">
+        <p class="warning_password_repeat"></p>
+    
+        <button class="signUp">sign up</button>
+        <button class="back">I have account</button>
+    </section>
+
+    <p class="copyright">&copy; 2019 Serdyuk Yura</p>
+    
+    <script>
+        (function () {
+            var signUp = document.querySelector('.signUp')
+                back = document.querySelector('.back')
+                warning_login = document.querySelector('.warning_login')
+                success_login = document.querySelector('.success_login')
+                warning_password = document.querySelector('.warning_password')
+                warning_password_repeat = document.querySelector('.warning_password_repeat')
+                
+            var win_heignt = window.innerHeight
+            var win_heignt2 = win_heignt - 165
+            document.querySelector('section').style.minHeight = win_heignt2 + 'px'
+
+            signUp.addEventListener('click', function () {
+                var login_data = document.querySelector('.email').value;
+                var password_data = document.querySelector('.password').value;
+                var password_repeat_data = document.querySelector('.password_repeat').value;
+        
+                fetch('/signUp', {
+                    method: 'POST', // or 'PUT'
+                    body: JSON.stringify({  // тіло запроса
+                        login_data:             login_data,
+                        password_data:          password_data,
+                        password_repeat_data:   password_repeat_data
+                    }), // data can be `string` or {object}!
+                    headers: new Headers({
+                    'Content-Type': 'application/json'
+                    })
+                }).then(res => res.json())
+                .catch(error => console.error('Error:', error))
+                .then(response => {
+                    console.log('Success:', response)
+                    warning_login.innerText = response.warning_login;
+                    warning_password.innerText = response.warning_password;
+                    warning_password_repeat.innerText = response.warning_password_repeat;
+                    if(response.triger == true) {
+                        success_login.innerText = "Success. Thank you for a registering. Redirect..."
+                        setTimeout(() => window.location.replace('/'), 2000)
+                    }
+                });
+            });
+
+            back.addEventListener('click', () => {
+                window.location.replace('/')
+            })
+        })();
+    </script>
+</body>
+</html>
